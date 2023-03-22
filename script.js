@@ -18,24 +18,32 @@ function formCards() {
         peek.style.height = '58px';
         peek.style.transform = 'scale(1.02)';
     });
+}
 
-    function getRandomNumber(min, max) {
-        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-        return randomNumber;
-    }
+function getRandomNumber(min, max) {
+    let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randomNumber;
 }
 
 formCards();
 
 function hideOnHover() {
     const cards = document.querySelectorAll('.player-card');
+
     cards.forEach((card) => {
+        card.querySelector('.peek > h3').innerHTML = card.getAttribute('data-card').charAt(0);
+
         card.addEventListener('mouseenter', () => {
             card.querySelector('.peek').classList.toggle('hidden');
         });
 
         card.addEventListener('mouseleave', () => {
             card.querySelector('.peek').classList.toggle('hidden');
+            card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg)';
+        });
+
+        card.addEventListener('click', () => {
+            document.querySelector('.player-text').innerHTML = card.getAttribute('data-card');
         });
     });
 }

@@ -111,11 +111,17 @@ section {
 
 .table-text h3 {
     background-color: var(--green);
+    display: inline-block;
     font-size: 24px;
     font-weight: 700;
-    margin: 14px 0;
-    padding-left: 15px;
-    padding-right: 12px;
+    margin: 4px 0;
+    padding-left: 8px;
+    padding-right: 5px;
+}
+
+.player-text,
+.opponent-text {
+    padding-left: 2px;
 }
 
 .round{
