@@ -254,6 +254,10 @@ section {
     padding: 0 12px;
 }
 
+.opponent-side {
+    transform: rotate(180deg);
+}
+
 /* FOOTER */
 
 footer {

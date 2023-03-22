@@ -15,3 +15,11 @@ for (var i = 0; i < cardPeeks.length; i++) {
     cardPeeks[i].style.width = '84px';
     cardPeeks[i].style.height = '58px';
 }
+
+function randomNumber(min, max) {
+    let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(randomNumber);
+    return randomNumber;
+}
+
+randomNumber(1, 10);
