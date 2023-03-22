@@ -54,22 +54,22 @@ header h2 {
 /* SECTION - GAME */
 
 section {
-    margin: 0 auto;
     display: flex;
     flex: 1;
+    padding: 16px;
 }
 
 .container {
-    width: 360px;
-    height: full;
-    margin: 0 16px;
-    padding: 8px;
+    max-width: 720px;
+    min-width: 280px;
+    margin: 0 auto;
+    padding: 12px;
     background: var(--green);
     border: none;
     border-radius: 18px;
     display: flex;
+    flex: 1;
     flex-direction: column;
-    flex-shrink: 1;
 }
 
 .middle-ground {
@@ -80,7 +80,7 @@ section {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 8px;
 }
 
@@ -139,8 +139,8 @@ section {
 .round h2 {
     font-size: 12px;
     font-weight: 700;
-    /* margin-top: 0; */
-    margin-left: 4px;
+    letter-spacing: 1px;
+    margin-left: 3px;
     margin-bottom: -5px;
 }
 
@@ -157,6 +157,7 @@ section {
     flex: 1;
     align-items: center;
     justify-content: center;
+    /* background: black; */
  }
 
 .side h3 {
@@ -168,26 +169,25 @@ section {
     z-index: 10;
     width: 80;
     height: 124;
-    background: var(--white);
     /* --- */
+    background: var(--white);
     color: var(--blue);
     font-weight: 700;
     font-size: 20px;
     position: absolute;
     /* --- */
     display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
+    flex: 1;
 }
 
-.card .back {
+.back {
     width: 70;
     height: 110;
     background: var(--blue);
     background-image: url("/assets/card-design.svg");
     background-repeat: no-repeat;
     background-position: center;
+    
 }
 
 /* FOOTER */
