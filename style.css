@@ -176,7 +176,7 @@ section {
 
 .card-set {
     position: absolute;
-    width: 100%;
+    width: 75%;
     display: flex;
     flex: 1;
     align-items: center;
