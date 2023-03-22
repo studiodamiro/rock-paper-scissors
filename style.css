@@ -11,5 +11,148 @@ body {
     color: var(--white);
     font-family: 'Roboto Slab', serif;
     text-transform: uppercase;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+a:hover {
+    color: var(--green);
+}
+
+/* HEADER */
+
+header {
+    margin: 24px 0;
+    padding: 16px;
+    text-align: center;
+}
+
+section {
+    background
+}
+
+header h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+header h2 {
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+/* SECTION - GAME */
+
+section {
+    margin: 0 auto;
+    display: flex;
+    flex: 1;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 16px;
+    padding: 8px;
+    background: var(--green);
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    flex: 0;
+}
+
+.side {
+    display: flex;
+    flex: 1;
+}
+
+.side h3 {
+    font-size: 48px;
+}
+
+.middle-ground {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+}
+.score {}
+.details {
+    text-align: center;
+    padding: 8px;
+}
+
+.table-text {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 14px 0;
+}
+
+.round{
+    background: var(--white);
+    color: var(--green);
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+}
+
+.round h2 {
+    font-size: 12px;
+    font-weight: 300;
+    /* margin-top: 0; */
+    padding: 0;
+}
+
+.round h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    width: 80;
+    height: 124;
+    background: var(--white);
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 20px;
+    display: block;
+}
+
+/* FOOTER */
+
+footer {
+    margin: 24px auto;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--white);
+}
+
+footer h4 {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+footer img {
+    margin-left: 4px;
+    margin-right: 8px;
 }
