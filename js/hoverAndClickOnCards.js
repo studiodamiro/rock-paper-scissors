@@ -3,6 +3,7 @@ import { updateScoreBoard } from './updateScoreBoard.js';
 import { getComputerChoice } from './gameAlgorithm.js';
 import { displayComputerChoice } from './displayComputerChoice.js';
 import { changeCardCursor } from './changeCursor.js';
+import { nextRound } from './nextRound.js';
 import { putDelay } from './putDelay.js';
 
 export function hoverAndClickOnCards() {
@@ -45,7 +46,7 @@ function toggleClickListener(card, status) {
         ? card.addEventListener('click', mouseClickHandler)
         : card.removeEventListener('click', mouseClickHandler);
 
-    function mouseClickHandler() {
+    async function mouseClickHandler() {
         // Get computer choice
         const computerChoice = getComputerChoice();
         displayComputerChoice(computerChoice);
@@ -68,37 +69,12 @@ function toggleClickListener(card, status) {
         updateScoreBoard(card.getAttribute('data-card'), computerChoice);
 
         // Apply changes to card
-        changeCardCursor(false);
         card.removeEventListener('click', mouseClickHandler);
         card.classList.remove('throw');
         console.log('click!');
 
         nextRound();
+        await putDelay(2500);
+        card.addEventListener('click', mouseClickHandler);
     }
-}
-
-async function nextRound() {
-    const cards = document.querySelectorAll('.card');
-    const hide = 'rotate(30deg) translateX(-1800px)';
-    const delay = 1000;
-
-    // hide unused cards
-    cards.forEach((card) => {
-        if (card.classList.contains('throw')) {
-            card.style.transform = hide;
-        }
-    });
-    await putDelay(delay + 500);
-
-    // hide remaining cards
-    cards.forEach((card) => {
-        card.style.transform = hide;
-    });
-    await putDelay(delay - 500);
-
-    // show cards
-    cards.forEach((card) => {
-        putDelay(300);
-        card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg) translateX(0px)';
-    });
 }

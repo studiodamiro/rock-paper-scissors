@@ -1,4 +1,9 @@
 export function shuffleComputeCards() {
+    const computerSelected = document.querySelector('#computer-selected');
+    computerSelected.querySelector('.front').classList.add('hidden');
+    computerSelected.querySelector('.peek').style.opacity = '1';
+    computerSelected.querySelector('.back').style.opacity = '1';
+
     const parent = document.querySelector('#computer-cards');
     const children = parent.children;
     const childArray = Array.from(children);

@@ -19,5 +19,8 @@ export function startGame() {
         shuffleComputeCards();
         shufflePlayerCards();
         hoverAndClickOnCards();
+
+        document.querySelector('.opponent-side > h3').innerHTML = 'go!';
+        document.querySelector('.player-side > h3').innerHTML = 'go!';
     }
 }
