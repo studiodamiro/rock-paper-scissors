@@ -80,7 +80,7 @@ function toggleClickListener(card, status) {
 async function nextRound() {
     const cards = document.querySelectorAll('.card');
     const hide = 'rotate(30deg) translateX(-1800px)';
-    const delay = 1500;
+    const delay = 1000;
 
     // hide unused cards
     cards.forEach((card) => {
@@ -88,13 +88,13 @@ async function nextRound() {
             card.style.transform = hide;
         }
     });
-    await putDelay(delay);
+    await putDelay(delay + 500);
 
     // hide remaining cards
     cards.forEach((card) => {
         card.style.transform = hide;
     });
-    await putDelay(delay);
+    await putDelay(delay - 500);
 
     // show cards
     cards.forEach((card) => {
