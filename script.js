@@ -13,15 +13,12 @@ export function getGameStart() {
     return gameStart;
 }
 
-startGame(false);
-
 helpRenderCards();
-hoverAndClickOnCards();
-shuffleComputeCards();
-shufflePlayerCards();
+startGame(false);
 
 function startGame(start) {
     let element = document.querySelector('.round');
+
     if (start) {
         changeCursor(false);
         document.querySelector('.round > div').classList.remove('hidden');
@@ -40,5 +37,9 @@ function startGame(start) {
         changeCursor(false);
         document.querySelector('.round > div').classList.remove('hidden');
         document.querySelector('.round > h2').classList.add('hidden');
+
+        hoverAndClickOnCards();
+        shuffleComputeCards();
+        shufflePlayerCards();
     }
 }

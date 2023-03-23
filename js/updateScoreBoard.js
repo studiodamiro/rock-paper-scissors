@@ -24,11 +24,11 @@ export function updateScoreBoard(playerChoice, computerChoice) {
 
 function updateRoundDisplay(reset) {
     if (reset) {
-        document.querySelector('.round > h3').innerHTML = '0';
+        document.querySelector('.in-game > h3').innerHTML = '0';
     } else {
-        let round = document.querySelector('.round > h3').innerHTML;
+        let round = document.querySelector('.in-game > h3').innerHTML;
         round++;
-        document.querySelector('.round > h3').innerHTML = round;
+        document.querySelector('.in-game > h3').innerHTML = round;
     }
 }
 
