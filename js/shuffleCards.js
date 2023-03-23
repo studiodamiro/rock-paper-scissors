@@ -17,17 +17,3 @@ export function shufflePlayerCards() {
         parent.appendChild(childArray[i]);
     }
 }
-
-function normalizeCards() {
-    const playerCards = document.querySelectorAll('.player-side > .card-set');
-    playerCards.forEach((card) => {
-        card.querySelector('.front').classList.add('hidden');
-        card.querySelector('.peek').style.opacity = '1';
-        card.querySelector('.back').style.opacity = '1';
-    });
-
-    const computerSelected = document.querySelector('#computer-selected');
-    computerSelected.querySelector('.front').classList.add('hidden');
-    computerSelected.querySelector('.peek').style.opacity = '1';
-    computerSelected.querySelector('.back').style.opacity = '1';
-}

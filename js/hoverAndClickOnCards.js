@@ -4,40 +4,60 @@ import { getComputerChoice } from './gameAlgorithm.js';
 import { displayComputerChoice } from './displayComputerChoice.js';
 
 export function hoverAndClickOnCards(round) {
-    const cards = document.querySelectorAll('.player-card');
-
+    const cards = document.querySelectorAll('.selection');
     cards.forEach((card) => {
         card.querySelector('.peek > h3').innerHTML = card.getAttribute('data-card').charAt(0);
 
-        card.addEventListener('mouseenter', () => {
-            card.querySelector('.peek').classList.toggle('hidden');
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.querySelector('.peek').classList.toggle('hidden');
-            card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg)';
-        });
-
-        card.addEventListener('click', () => {
-            if (round) {
-                // Get computer choice
-                const computerChoice = getComputerChoice();
-                displayComputerChoice(computerChoice);
-
-                // Display player card choice
-                card.querySelector('.front').classList.remove('hidden');
-                card.querySelector('.peek').style.opacity = '0';
-                card.querySelector('.back').style.opacity = '0';
-
-                // Display opponent card choice
-                const computerSelected = document.querySelector('#computer-selected');
-                computerSelected.querySelector('.front').classList.remove('hidden');
-                computerSelected.querySelector('.peek').style.opacity = '0';
-                computerSelected.querySelector('.back').style.opacity = '0';
-
-                // Update score board
-                updateScoreBoard(card.getAttribute('data-card'), computerChoice);
-            }
-        });
+        // mouse llisteners
+        card.addEventListener('mouseenter', toggleEnterListener(card, round));
+        card.addEventListener('mouseleave', toggleLeaveListener(card, round));
+        card.addEventListener('click', toggleClickListener(card, round));
     });
+}
+
+function toggleEnterListener(card, listening) {
+    listening
+        ? card.addEventListener('mouseenter', mouseHandler)
+        : card.removeEventListener('mouseenter', mouseHandler);
+
+    function mouseHandler() {
+        card.querySelector('.peek').classList.toggle('hidden');
+    }
+}
+
+function toggleLeaveListener(card, listening) {
+    listening
+        ? card.addEventListener('mouseleave', mouseHandler)
+        : card.removeEventListener('mouseleave', mouseHandler);
+
+    function mouseHandler() {
+        card.querySelector('.peek').classList.toggle('hidden');
+        card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg)';
+    }
+}
+
+function toggleClickListener(card, listening) {
+    listening
+        ? card.addEventListener('click', mouseHandler)
+        : card.removeEventListener('click', mouseHandler);
+
+    function mouseHandler() {
+        // Get computer choice
+        const computerChoice = getComputerChoice();
+        displayComputerChoice(computerChoice);
+
+        // Display player card choice
+        card.querySelector('.front').classList.remove('hidden');
+        card.querySelector('.peek').style.opacity = '0';
+        card.querySelector('.back').style.opacity = '0';
+
+        // Display opponent card choice
+        const computerSelected = document.querySelector('#computer-selected');
+        computerSelected.querySelector('.front').classList.remove('hidden');
+        computerSelected.querySelector('.peek').style.opacity = '0';
+        computerSelected.querySelector('.back').style.opacity = '0';
+
+        // Update score board
+        updateScoreBoard(card.getAttribute('data-card'), computerChoice);
+    }
 }

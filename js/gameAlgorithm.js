@@ -17,16 +17,17 @@ export function playRound(playerSelection, computerSelection) {
     // console.log('You: ' + playerSelection + ' vs PC: ' + computerSelection);
     if (playerSelection != 'invalid') {
         if (playerSelection == computerSelection) {
-            console.log("It's a draw! \n");
+            // return draw
+            // console.log("It's a draw! \n");
         } else if (
             (playerSelection == 'paper' && computerSelection == 'rock') ||
             (playerSelection == 'rock' && computerSelection == 'scissor') ||
             (playerSelection == 'scissor' && computerSelection == 'paper')
         ) {
-            console.log('You Win! \n');
+            // console.log('You Win! \n');
             return true;
         } else {
-            console.log('You Lose! \n');
+            // console.log('You Lose! \n');
             return false;
         }
     }
@@ -45,7 +46,7 @@ function playMultipleTimes(times) {
         }
     }
     let winner = playerScore > computerScore ? 'You win!' : 'You lose!';
-    console.log('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
+    // console.log('Player Score: ' + playerScore + ' Computer Score: ' + computerScore);
     console.log(winner);
 }
 
