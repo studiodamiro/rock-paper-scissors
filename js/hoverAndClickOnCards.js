@@ -11,17 +11,15 @@ export function hoverAndClickOnCards() {
     cards.forEach((card) => {
         card.querySelector('.peek > h3').innerHTML = card.getAttribute('data-card').charAt(0);
         // mouse llisteners
-        toggleEnterListener(card, true);
-        toggleLeaveListener(card, true);
-        toggleClickListener(card, true);
+        toggleEnterListener(card);
+        toggleLeaveListener(card);
+        toggleClickListener(card);
     });
     changeCardCursor(true);
 }
 
-function toggleEnterListener(card, status) {
-    status
-        ? card.addEventListener('mouseenter', mouseEnterHandler)
-        : card.removeEventListener('mouseenter', mouseEnterHandler);
+function toggleEnterListener(card) {
+    card.addEventListener('mouseenter', mouseEnterHandler);
 
     function mouseEnterHandler() {
         card.querySelector('.peek').classList.toggle('hidden');
@@ -29,10 +27,8 @@ function toggleEnterListener(card, status) {
     }
 }
 
-function toggleLeaveListener(card, status) {
-    status
-        ? card.addEventListener('mouseleave', mouseLeaveHandler)
-        : card.removeEventListener('mouseleave', mouseLeaveHandler);
+function toggleLeaveListener(card) {
+    card.addEventListener('mouseleave', mouseLeaveHandler);
 
     function mouseLeaveHandler() {
         card.querySelector('.peek').classList.toggle('hidden');
@@ -40,13 +36,14 @@ function toggleLeaveListener(card, status) {
     }
 }
 
-function toggleClickListener(card, status) {
+function toggleClickListener(card) {
     // let status = getGameStart();
-    status
-        ? card.addEventListener('click', mouseClickHandler)
-        : card.removeEventListener('click', mouseClickHandler);
+    card.addEventListener('click', mouseClickHandler);
 
-    async function mouseClickHandler() {
+    function mouseClickHandler() {
+        // cover table to disable cards
+        document.querySelector('.cover').classList.toggle('hidden');
+
         // Get computer choice
         const computerChoice = getComputerChoice();
         displayComputerChoice(computerChoice);
@@ -69,12 +66,7 @@ function toggleClickListener(card, status) {
         updateScoreBoard(card.getAttribute('data-card'), computerChoice);
 
         // Apply changes to card
-        card.removeEventListener('click', mouseClickHandler);
         card.classList.remove('throw');
-        console.log('click!');
-
         nextRound();
-        await putDelay(2500);
-        card.addEventListener('click', mouseClickHandler);
     }
 }

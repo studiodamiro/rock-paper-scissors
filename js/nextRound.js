@@ -4,7 +4,7 @@ import { shuffleComputeCards, shufflePlayerCards } from './shuffleCards.js';
 
 export async function nextRound() {
     const allCards = document.querySelectorAll('.card');
-    const hide = 'rotate(30deg) translateX(-1800px)';
+    const hide = 'rotate(45deg) translateX(-1200px)';
     const delay = 1000;
 
     // hide unused cards
@@ -31,8 +31,14 @@ export async function nextRound() {
 
     shuffleComputeCards();
     shufflePlayerCards();
+
+    document.querySelector('.cover').classList.toggle('hidden');
     document.querySelector('.player-side > h3').innerHTML = '';
     document.querySelector('.opponent-side > h3').innerHTML = '';
+    document.querySelector('.player-text').innerHTML = '';
+    document.querySelector('.opponent-text').innerHTML = '';
+    document.querySelector('.table-text > h3').innerHTML = '';
+
     const selection = document.querySelectorAll('.selection');
     selection.forEach((card) => {
         card.classList.add('throw');
