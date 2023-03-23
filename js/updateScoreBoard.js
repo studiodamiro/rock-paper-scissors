@@ -1,4 +1,5 @@
 import { playRound } from './gameAlgorithm.js';
+import { setPlayerScore, getPlayerScore, setOpponentScore, getOpponentScore } from '../script.js';
 
 export function updateScoreBoard(playerChoice, computerChoice) {
     let roundStatus = playRound(playerChoice, computerChoice);
@@ -11,10 +12,14 @@ export function updateScoreBoard(playerChoice, computerChoice) {
         document.querySelector('.opponent-side > h3').innerHTML = 'you lose';
         document.querySelector('.player-side > h3').innerHTML = 'you win';
         updateScoreDisplay(true);
+        // update player score
+        setPlayerScore(getPlayerScore() + 1);
     } else if (roundStatus === false) {
         document.querySelector('.opponent-side > h3').innerHTML = 'you win';
         document.querySelector('.player-side > h3').innerHTML = 'you lose';
         updateScoreDisplay(false);
+        // update opponent score
+        setOpponentScore(getOpponentScore() + 1);
     } else {
         document.querySelector('.opponent-side > h3').innerHTML = 'draw';
         document.querySelector('.player-side > h3').innerHTML = 'draw';

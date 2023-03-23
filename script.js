@@ -1,9 +1,15 @@
 import { helpRenderCards } from './js/helpRenderCards.js';
 import { startGame } from './js/startGame.js';
 
-export let gameStarted = false;
-export let setGameStarted = (newValue) => (gameStarted = newValue); // sets gameStarted global variable to that newValue.
-export let getGameStarted = () => gameStarted; // returns the value of the gameStarted global variable
+export const totalRound = 5;
+
+export let playerScore = 0;
+export let setPlayerScore = (newValue) => (playerScore = newValue);
+export let getPlayerScore = () => playerScore;
+
+export let opponentScore = 0;
+export let setOpponentScore = (newValue) => (opponentScore = newValue);
+export let getOpponentScore = () => opponentScore;
 
 document.querySelector('.opponent-side > h3').innerHTML = 'waiting';
 document.querySelector('.player-side > h3').innerHTML = 'press play';
