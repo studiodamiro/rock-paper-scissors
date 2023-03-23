@@ -2,21 +2,22 @@ import { getRandomNumber } from './getRandomNumber.js';
 import { updateScoreBoard } from './updateScoreBoard.js';
 import { getComputerChoice } from './gameAlgorithm.js';
 import { displayComputerChoice } from './displayComputerChoice.js';
+import { getGameStart, setGameStart } from '../script.js';
 
-export function hoverAndClickOnCards(round) {
+export function hoverAndClickOnCards() {
     const cards = document.querySelectorAll('.selection');
     cards.forEach((card) => {
         card.querySelector('.peek > h3').innerHTML = card.getAttribute('data-card').charAt(0);
 
         // mouse llisteners
-        card.addEventListener('mouseenter', toggleEnterListener(card, round));
-        card.addEventListener('mouseleave', toggleLeaveListener(card, round));
-        card.addEventListener('click', toggleClickListener(card, round));
+        card.addEventListener('mouseenter', toggleEnterListener(card));
+        card.addEventListener('mouseleave', toggleLeaveListener(card));
+        card.addEventListener('click', toggleClickListener(card));
     });
 }
 
-function toggleEnterListener(card, listening) {
-    listening
+function toggleEnterListener(card) {
+    getGameStart()
         ? card.addEventListener('mouseenter', mouseHandler)
         : card.removeEventListener('mouseenter', mouseHandler);
 
@@ -25,8 +26,8 @@ function toggleEnterListener(card, listening) {
     }
 }
 
-function toggleLeaveListener(card, listening) {
-    listening
+function toggleLeaveListener(card) {
+    getGameStart()
         ? card.addEventListener('mouseleave', mouseHandler)
         : card.removeEventListener('mouseleave', mouseHandler);
 
@@ -36,8 +37,8 @@ function toggleLeaveListener(card, listening) {
     }
 }
 
-function toggleClickListener(card, listening) {
-    listening
+function toggleClickListener(card) {
+    getGameStart()
         ? card.addEventListener('click', mouseHandler)
         : card.removeEventListener('click', mouseHandler);
 
@@ -59,5 +60,7 @@ function toggleClickListener(card, listening) {
 
         // Update score board
         updateScoreBoard(card.getAttribute('data-card'), computerChoice);
+
+        setGameStart(false);
     }
 }
