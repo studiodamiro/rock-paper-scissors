@@ -4,7 +4,6 @@ import { getComputerChoice } from './gameAlgorithm.js';
 import { displayComputerChoice } from './displayComputerChoice.js';
 import { changeCardCursor } from './changeCursor.js';
 import { nextRound } from './nextRound.js';
-import { putDelay } from './putDelay.js';
 
 export function hoverAndClickOnCards() {
     const cards = document.querySelectorAll('.selection');
