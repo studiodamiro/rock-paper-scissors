@@ -18,6 +18,18 @@ export function updateScoreBoard(playerChoice, computerChoice) {
         document.querySelector('.opponent-side > h3').innerHTML = 'draw';
         document.querySelector('.player-side > h3').innerHTML = 'draw';
     }
+
+    updateRoundDisplay(false);
+}
+
+function updateRoundDisplay(reset) {
+    if (reset) {
+        document.querySelector('.round > h3').innerHTML = '0';
+    } else {
+        let round = document.querySelector('.round > h3').innerHTML;
+        round++;
+        document.querySelector('.round > h3').innerHTML = round;
+    }
 }
 
 function updateScoreDisplay(win) {
