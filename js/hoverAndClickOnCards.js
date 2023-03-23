@@ -27,7 +27,8 @@ function toggleEnterListener(card) {
 }
 
 function toggleLeaveListener(card) {
-    getGameStart()
+    let status = getGameStart();
+    status
         ? card.addEventListener('mouseleave', mouseHandler)
         : card.removeEventListener('mouseleave', mouseHandler);
 
@@ -38,7 +39,8 @@ function toggleLeaveListener(card) {
 }
 
 function toggleClickListener(card) {
-    getGameStart()
+    let status = getGameStart();
+    status
         ? card.addEventListener('click', mouseHandler)
         : card.removeEventListener('click', mouseHandler);
 
@@ -62,5 +64,6 @@ function toggleClickListener(card) {
         updateScoreBoard(card.getAttribute('data-card'), computerChoice);
 
         setGameStart(false);
+        card.removeEventListener('click', mouseHandler);
     }
 }
