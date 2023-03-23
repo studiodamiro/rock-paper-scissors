@@ -3,6 +3,6 @@ import { hoverAndClickOnCards } from './js/hoverAndClickOnCards.js';
 import { shuffleComputeCards, shufflePlayerCards } from './js/shuffleCards.js';
 
 helpRenderCards();
-hoverAndClickOnCards();
+hoverAndClickOnCards(0);
 shuffleComputeCards();
 shufflePlayerCards();

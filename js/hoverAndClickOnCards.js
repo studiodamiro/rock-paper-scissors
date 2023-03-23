@@ -3,7 +3,7 @@ import { updateScoreBoard } from './updateScoreBoard.js';
 import { getComputerChoice } from './gameAlgorithm.js';
 import { displayComputerChoice } from './displayComputerChoice.js';
 
-export function hoverAndClickOnCards() {
+export function hoverAndClickOnCards(round) {
     const cards = document.querySelectorAll('.player-card');
 
     cards.forEach((card) => {
@@ -19,23 +19,25 @@ export function hoverAndClickOnCards() {
         });
 
         card.addEventListener('click', () => {
-            // Get computer choice
-            const computerChoice = getComputerChoice();
-            displayComputerChoice(computerChoice);
+            if (round) {
+                // Get computer choice
+                const computerChoice = getComputerChoice();
+                displayComputerChoice(computerChoice);
 
-            // Display player card choice
-            card.querySelector('.front').classList.remove('hidden');
-            card.querySelector('.peek').style.opacity = '0';
-            card.querySelector('.back').style.opacity = '0';
+                // Display player card choice
+                card.querySelector('.front').classList.remove('hidden');
+                card.querySelector('.peek').style.opacity = '0';
+                card.querySelector('.back').style.opacity = '0';
 
-            // Display opponent card choice
-            const computerSelected = document.querySelector('#computer-selected');
-            computerSelected.querySelector('.front').classList.remove('hidden');
-            computerSelected.querySelector('.peek').style.opacity = '0';
-            computerSelected.querySelector('.back').style.opacity = '0';
+                // Display opponent card choice
+                const computerSelected = document.querySelector('#computer-selected');
+                computerSelected.querySelector('.front').classList.remove('hidden');
+                computerSelected.querySelector('.peek').style.opacity = '0';
+                computerSelected.querySelector('.back').style.opacity = '0';
 
-            // Update score board
-            updateScoreBoard(card.getAttribute('data-card'), computerChoice);
+                // Update score board
+                updateScoreBoard(card.getAttribute('data-card'), computerChoice);
+            }
         });
     });
 }
