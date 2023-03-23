@@ -5,6 +5,7 @@ export function updateScoreBoard(playerChoice, computerChoice) {
 
     document.querySelector('.player-text').innerHTML = playerChoice;
     document.querySelector('.opponent-text').innerHTML = computerChoice;
+    document.querySelector('.table-text > h3').innerHTML = 'vs';
 
     if (roundStatus === true) {
         document.querySelector('.opponent-side > h3').innerHTML = 'you lose';

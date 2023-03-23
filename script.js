@@ -1,31 +1,26 @@
 import { helpRenderCards } from './js/helpRenderCards.js';
 import { hoverAndClickOnCards } from './js/hoverAndClickOnCards.js';
 import { shuffleComputeCards, shufflePlayerCards } from './js/shuffleCards.js';
-import { changeCursor } from './js/changeCursor.js';
-
-export let gameStart = true;
-
-export function setGameStart(newValue) {
-    gameStart = newValue;
-}
-
-export function getGameStart() {
-    return gameStart;
-}
+import { changeStartCursor } from './js/changeCursor.js';
 
 helpRenderCards();
-startGame(false);
+
+export let gameStarted = false;
+export let setGameStarted = (newValue) => (gameStarted = newValue); // sets gameStarted global variable to that newValue.
+export let getGameStarted = () => gameStarted; // returns the value of the gameStarted global variable
+
+startGame(gameStarted);
 
 function startGame(start) {
     let element = document.querySelector('.round');
 
     if (start) {
-        changeCursor(false);
+        changeStartCursor(false);
         document.querySelector('.round > div').classList.remove('hidden');
         document.querySelector('.round > h2').classList.add('hidden');
         element.removeEventListener('click', onClick);
     } else {
-        changeCursor(true);
+        changeStartCursor(true);
         document.querySelector('.round > div').classList.add('hidden');
         document.querySelector('.round > h2').classList.remove('hidden');
         element.addEventListener('click', onClick);
@@ -34,12 +29,14 @@ function startGame(start) {
     function onClick() {
         console.log('click');
         element.removeEventListener('click', onClick);
-        changeCursor(false);
+        changeStartCursor(false);
         document.querySelector('.round > div').classList.remove('hidden');
         document.querySelector('.round > h2').classList.add('hidden');
 
-        hoverAndClickOnCards();
+        setGameStarted(true);
+
         shuffleComputeCards();
         shufflePlayerCards();
+        hoverAndClickOnCards(); // enable cards
     }
 }

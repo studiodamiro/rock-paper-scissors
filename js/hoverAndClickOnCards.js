@@ -2,49 +2,50 @@ import { getRandomNumber } from './getRandomNumber.js';
 import { updateScoreBoard } from './updateScoreBoard.js';
 import { getComputerChoice } from './gameAlgorithm.js';
 import { displayComputerChoice } from './displayComputerChoice.js';
-import { getGameStart, setGameStart } from '../script.js';
+import { getGameStarted, setGameStarted } from '../script.js';
+import { changeCardCursor } from './changeCursor.js';
 
 export function hoverAndClickOnCards() {
     const cards = document.querySelectorAll('.selection');
     cards.forEach((card) => {
         card.querySelector('.peek > h3').innerHTML = card.getAttribute('data-card').charAt(0);
-
         // mouse llisteners
-        card.addEventListener('mouseenter', toggleEnterListener(card));
-        card.addEventListener('mouseleave', toggleLeaveListener(card));
-        card.addEventListener('click', toggleClickListener(card));
+        toggleEnterListener(card, true);
+        toggleLeaveListener(card, true);
+        toggleClickListener(card, true);
     });
+    changeCardCursor(true);
 }
 
-function toggleEnterListener(card) {
-    getGameStart()
-        ? card.addEventListener('mouseenter', mouseHandler)
-        : card.removeEventListener('mouseenter', mouseHandler);
-
-    function mouseHandler() {
-        card.querySelector('.peek').classList.toggle('hidden');
-    }
-}
-
-function toggleLeaveListener(card) {
-    let status = getGameStart();
+function toggleEnterListener(card, status) {
     status
-        ? card.addEventListener('mouseleave', mouseHandler)
-        : card.removeEventListener('mouseleave', mouseHandler);
+        ? card.addEventListener('mouseenter', mouseEnterHandler)
+        : card.removeEventListener('mouseenter', mouseEnterHandler);
 
-    function mouseHandler() {
+    function mouseEnterHandler() {
         card.querySelector('.peek').classList.toggle('hidden');
         card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg)';
     }
 }
 
-function toggleClickListener(card) {
-    let status = getGameStart();
+function toggleLeaveListener(card, status) {
     status
-        ? card.addEventListener('click', mouseHandler)
-        : card.removeEventListener('click', mouseHandler);
+        ? card.addEventListener('mouseleave', mouseLeaveHandler)
+        : card.removeEventListener('mouseleave', mouseLeaveHandler);
 
-    function mouseHandler() {
+    function mouseLeaveHandler() {
+        card.querySelector('.peek').classList.toggle('hidden');
+        // card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg)';
+    }
+}
+
+function toggleClickListener(card, status) {
+    // let status = getGameStart();
+    status
+        ? card.addEventListener('click', mouseClickHandler)
+        : card.removeEventListener('click', mouseClickHandler);
+
+    function mouseClickHandler() {
         // Get computer choice
         const computerChoice = getComputerChoice();
         displayComputerChoice(computerChoice);
@@ -53,17 +54,29 @@ function toggleClickListener(card) {
         card.querySelector('.front').classList.remove('hidden');
         card.querySelector('.peek').style.opacity = '0';
         card.querySelector('.back').style.opacity = '0';
+        card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg) translateY(-50px)';
 
         // Display opponent card choice
         const computerSelected = document.querySelector('#computer-selected');
         computerSelected.querySelector('.front').classList.remove('hidden');
         computerSelected.querySelector('.peek').style.opacity = '0';
         computerSelected.querySelector('.back').style.opacity = '0';
+        computerSelected.style.transform =
+            'rotate(' + getRandomNumber(-10, 10) + 'deg) translateY(-50px)';
 
         // Update score board
         updateScoreBoard(card.getAttribute('data-card'), computerChoice);
 
-        setGameStart(false);
-        card.removeEventListener('click', mouseHandler);
+        // setGameStarted(false);
+        changeCardCursor(false);
+        removeListeners();
+        // card.removeEventListener('click', mouseClickHandler);
+    }
+
+    function removeListeners() {
+        const cards = document.querySelectorAll('.selection');
+        cards.forEach((card) => {
+            card.removeEventListener('click', mouseClickHandler);
+        });
     }
 }

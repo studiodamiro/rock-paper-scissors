@@ -170,19 +170,23 @@ section {
     align-items: center;
     justify-content: center;
     transform: rotate(0deg); // hack for limiting the occupy of entire width
+    
 }
 
 .side > h3 {
     font-size: 48px;
     opacity: 0.2;
+    position: absolute;
+    top: 0;
 }
 
 .card-set {
     position: absolute;
+    bottom: 12px;
     width: 75%;
     display: flex;
     flex: 1;
-    align-items: center;
+    align-items: flex-end;
     gap: 26px;
     justify-content: space-evenly;
 }
@@ -201,6 +205,7 @@ section {
     padding: 0;
     display: flex;
     flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
 }
 
 .front {
