@@ -27,7 +27,6 @@ function startGame(start) {
     }
 
     function onClick() {
-        console.log('click');
         element.removeEventListener('click', onClick);
         changeStartCursor(false);
         document.querySelector('.round > div').classList.remove('hidden');

@@ -2,7 +2,6 @@ import { getRandomNumber } from './getRandomNumber.js';
 import { updateScoreBoard } from './updateScoreBoard.js';
 import { getComputerChoice } from './gameAlgorithm.js';
 import { displayComputerChoice } from './displayComputerChoice.js';
-import { getGameStarted, setGameStarted } from '../script.js';
 import { changeCardCursor } from './changeCursor.js';
 
 export function hoverAndClickOnCards() {
@@ -67,16 +66,11 @@ function toggleClickListener(card, status) {
         // Update score board
         updateScoreBoard(card.getAttribute('data-card'), computerChoice);
 
-        // setGameStarted(false);
+        // Apply changes to card
         changeCardCursor(false);
-        removeListeners();
-        // card.removeEventListener('click', mouseClickHandler);
-    }
-
-    function removeListeners() {
-        const cards = document.querySelectorAll('.selection');
-        cards.forEach((card) => {
-            card.removeEventListener('click', mouseClickHandler);
-        });
+        card.removeEventListener('click', mouseClickHandler);
+        console.log('click!');
     }
 }
+
+function throwCards() {}

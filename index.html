@@ -1,102 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="assets/favicon-32x32.png" type="image/x-icon" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&display=swap" />
-        <link rel="stylesheet" href="style.css" />
-        <script type="module" src="script.js" defer></script>
-        <title>Rock Paper Scissors</title>
-    </head>
-    <body>
-        <header>
-            <h1>Rock Paper Scissors</h1>
-            <h2>Odin Cup - Win best of five</h2>
-        </header>
-        <section>
-            <div class="container">
-                <div class="side opponent-side">
-                    <div id="computer-cards" class="card-set">
-                        <div id="computer-selected" data-card="" class="card">
-                            <div class="peek hidden"><h3></h3></div>
-                            <div class="back"></div>
-                            <div class="front">
-                                <h3 class="top"></h3>
-                                <img src="" alt="Card type" />
-                                <h3 class="bottom"></h3>
-                            </div>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/favicon-32x32.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&display=swap" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="script.js" defer></script>
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+    <header>
+        <h1>Rock Paper Scissors</h1>
+        <h2>Odin Cup - Win best of five</h2>
+    </header>
+    <section>
+        <div class="container">
+            <div class="side opponent-side">
+                <div id="computer-cards" class="card-set">
+                    <div id="computer-selected" data-card="" class="card">
+                        <div class="peek hidden">
+                            <h3></h3>
                         </div>
-                        <div class="card">
-                            <div class="back"></div>
-                        </div>
-                        <div class="card">
-                            <div class="back"></div>
+                        <div class="back"></div>
+                        <div class="front">
+                            <h3 class="top"></h3>
+                            <img src="" alt="Card type" />
+                            <h3 class="bottom"></h3>
                         </div>
                     </div>
-                    <h3></h3>
-                </div>
-                <div class="middle-ground">
-                    <div class="score">
-                        <h3>0</h3>
-                        <h3>0</h3>
+                    <div class="card">
+                        <div class="back"></div>
                     </div>
-                    <div class="details">
-                        <div class="opponent-text"></div>
-                        <div class="table-text"><h3></h3></div>
-                        <div class="player-text"></div>
-                    </div>
-                    <div class="round">
-                        <div class="in-game hidden">
-                            <h2>Round</h2>
-                            <h3>0</h3>
-                        </div>
-                        <h2 class="">Play</h2>
+                    <div class="card">
+                        <div class="back"></div>
                     </div>
                 </div>
-                <div class="side player-side">
-                    <div id="player-cards" class="card-set">
-                        <div data-card="rock" class="card selection">
-                            <div class="peek hidden"><h3></h3></div>
-                            <div class="back"></div>
-                            <div class="front hidden">
-                                <h3 class="top">R</h3>
-                                <img src="assets/hand-rock.svg" alt="Card type" />
-                                <h3 class="bottom">R</h3>
-                            </div>
-                        </div>
-                        <div data-card="paper" class="card selection">
-                            <div class="peek hidden"><h3></h3></div>
-                            <div class="back"></div>
-                            <div class="front hidden">
-                                <h3 class="top">P</h3>
-                                <img src="assets/hand-paper.svg" alt="Card type" />
-                                <h3 class="bottom">P</h3>
-                            </div>
-                        </div>
-                        <div data-card="scissor" class="card selection">
-                            <div class="peek hidden"><h3></h3></div>
-                            <div class="back"></div>
-                            <div class="front hidden">
-                                <h3 class="top">S</h3>
-                                <img src="assets/hand-scissor.svg" alt="Card type" />
-                                <h3 class="bottom">S</h3>
-                            </div>
-                        </div>
+                <h3></h3>
+            </div>
+            <div class="middle-ground">
+                <div class="score">
+                    <h3>0</h3>
+                    <h3>0</h3>
+                </div>
+                <div class="details">
+                    <div class="opponent-text"></div>
+                    <div class="table-text">
+                        <h3></h3>
                     </div>
-                    <h3></h3>
+                    <div class="player-text"></div>
+                </div>
+                <div class="round">
+                    <div class="in-game hidden">
+                        <h2>Round</h2>
+                        <h3>0</h3>
+                    </div>
+                    <h2 class="">Play</h2>
                 </div>
             </div>
-        </section>
-        <footer>
-            <h4><a href="https://www.theodinproject.com/">Made with Odin</a></h4>
-            <img src="assets/logo-github.svg" alt="Github logo" />
-            <h4><a href="https://github.com/hello-damiro/rock-paper-scissors">Hello-damiro</a></h4>
-        </footer>
-    </body>
+            <div class="side player-side">
+                <div id="player-cards" class="card-set">
+                    <div data-card="rock" class="card selection">
+                        <div class="peek hidden">
+                            <h3></h3>
+                        </div>
+                        <div class="back"></div>
+                        <div class="front hidden">
+                            <h3 class="top">R</h3>
+                            <img src="assets/hand-rock.svg" alt="Card type" />
+                            <h3 class="bottom">R</h3>
+                        </div>
+                    </div>
+                    <div data-card="paper" class="card selection">
+                        <div class="peek hidden">
+                            <h3></h3>
+                        </div>
+                        <div class="back"></div>
+                        <div class="front hidden">
+                            <h3 class="top">P</h3>
+                            <img src="assets/hand-paper.svg" alt="Card type" />
+                            <h3 class="bottom">P</h3>
+                        </div>
+                    </div>
+                    <div data-card="scissor" class="card selection">
+                        <div class="peek hidden">
+                            <h3></h3>
+                        </div>
+                        <div class="back"></div>
+                        <div class="front hidden">
+                            <h3 class="top">S</h3>
+                            <img src="assets/hand-scissor.svg" alt="Card type" />
+                            <h3 class="bottom">S</h3>
+                        </div>
+                    </div>
+                </div>
+                <h3></h3>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h4><a href="https://www.theodinproject.com/">Made with Odin</a></h4>
+        <img src="assets/logo-github.svg" alt="Github logo" />
+        <h4><a href="https://github.com/hello-damiro/rock-paper-scissors">Hello-damiro</a></h4>
+    </footer>
+</body>
+
 </html>
