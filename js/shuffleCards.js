@@ -2,11 +2,6 @@ import { getRandomNumber } from './getRandomNumber.js';
 import { putDelay } from './putDelay.js';
 
 export function shuffleComputeCards() {
-    const computerSelected = document.querySelector('#computer-selected');
-    computerSelected.querySelector('.front').classList.add('hidden');
-    computerSelected.querySelector('.peek').style.opacity = '1';
-    computerSelected.querySelector('.back').style.opacity = '1';
-
     const parent = document.querySelector('#computer-cards');
     const children = parent.children;
     const childArray = Array.from(children);
@@ -27,6 +22,11 @@ export function shufflePlayerCards() {
 }
 
 export async function prepareAndShuffleCards() {
+    // Reset cards turning on its back
+    const computerSelected = document.querySelector('#computer-selected');
+    computerSelected.querySelector('.front').classList.add('hidden');
+    computerSelected.querySelector('.peek').style.opacity = '1';
+    computerSelected.querySelector('.back').style.opacity = '1';
     const selection = document.querySelectorAll('.selection');
     selection.forEach((card) => {
         card.classList.add('throw');
@@ -35,13 +35,14 @@ export async function prepareAndShuffleCards() {
         card.querySelector('.back').style.opacity = '1';
     });
 
+    // display cards on table
     const allCards = document.querySelectorAll('.card');
     allCards.forEach((card) => {
         card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg) translateX(0px)';
     });
 
+    // shuffle while animating back to table
     await putDelay(150);
-
     shuffleComputeCards();
     shufflePlayerCards();
 }
