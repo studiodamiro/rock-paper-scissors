@@ -2,14 +2,18 @@ import { setOpponentScore, setPlayerScore } from '../script.js';
 import { changeStartCursor } from './changeCursor.js';
 import { updateRoundDisplay, updateScoreDisplay } from './updateScoreBoard.js';
 import { prepareAndShuffleCards } from './shuffleCards.js';
-import { getRandomNumber } from './getRandomNumber.js';
 
 export function prepareGame() {
+    // Setup play button
     let element = document.querySelector('.round');
-
-    changeStartCursor(true);
     document.querySelector('.round > div').classList.add('hidden');
     document.querySelector('.round > h2').classList.remove('hidden');
+
+    document.querySelector('.opponent-text').innerHTML = '---';
+    document.querySelector('.table-text > h3').innerHTML = 'race to five';
+    document.querySelector('.player-text').innerHTML = 'press play';
+
+    changeStartCursor(true);
     element.addEventListener('click', startGame);
 }
 
@@ -34,8 +38,8 @@ export function startGame() {
     updateScoreDisplay(true);
 
     // prepare each side texts
-    document.querySelector('.opponent-side > h3').innerHTML = 'go!';
-    document.querySelector('.player-side > h3').innerHTML = 'go!';
+    document.querySelector('.opponent-side > h3').innerHTML = 'pick a card';
+    document.querySelector('.player-side > h3').innerHTML = 'pick a card';
 
     // prepare cards sets
     prepareAndShuffleCards();

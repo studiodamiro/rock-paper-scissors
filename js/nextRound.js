@@ -33,22 +33,20 @@ async function determineRound() {
             document.querySelector('.player-text').innerHTML = 'to play again';
 
             document.querySelector('.player-side > h3').innerHTML = 'congrats';
-            document.querySelector('.opponent-side > h3').innerHTML = '';
+            document.querySelector('.opponent-side > h3').innerHTML = 'lost';
         } else {
             // player loses
             document.querySelector('.opponent-text').innerHTML = ' play again?';
             document.querySelector('.table-text > h3').innerHTML = '';
             document.querySelector('.player-text').innerHTML = 'press play';
 
-            document.querySelector('.player-side > h3').innerHTML = '';
+            document.querySelector('.player-side > h3').innerHTML = 'lost';
             document.querySelector('.opponent-side > h3').innerHTML = 'congrats';
         }
 
-        // Enable play button
+        // Prepare table
+        await putDelay(3000);
         prepareGame();
-        // onClick play button
-        // reset score boards
-        // prepare initial cards
     } else {
         // continue to next round
         prepareAndShuffleCards();
@@ -58,6 +56,6 @@ async function determineRound() {
         document.querySelector('.opponent-side > h3').innerHTML = '';
         document.querySelector('.player-text').innerHTML = '';
         document.querySelector('.opponent-text').innerHTML = '';
-        document.querySelector('.table-text > h3').innerHTML = '';
+        document.querySelector('.table-text > h3').innerHTML = 'pick a card';
     }
 }
