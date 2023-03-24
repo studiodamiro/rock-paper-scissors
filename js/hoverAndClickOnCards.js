@@ -5,7 +5,7 @@ import { displayComputerChoice } from './displayComputerChoice.js';
 import { changeCardCursor } from './changeCursor.js';
 import { nextRound } from './nextRound.js';
 
-export function hoverAndClickOnCards() {
+export function setHoverAndClickOnCards() {
     const cards = document.querySelectorAll('.selection');
     cards.forEach((card) => {
         card.querySelector('.peek > h3').innerHTML = card.getAttribute('data-card').charAt(0);

@@ -1,8 +1,8 @@
 import { helpRenderCards } from './js/helpRenderCards.js';
-import { hoverAndClickOnCards } from './js/hoverAndClickOnCards.js';
+import { setHoverAndClickOnCards } from './js/hoverAndClickOnCards.js';
 import { prepareGame } from './js/startGame.js';
 
-export const totalRound = 2;
+export const raceToNumber = 2;
 
 export let playerScore = 0;
 export let setPlayerScore = (newValue) => (playerScore = newValue);
@@ -17,5 +17,5 @@ document.querySelector('.player-side > h3').innerHTML = 'press play';
 document.querySelector('.cover').classList.toggle('hidden');
 
 helpRenderCards();
-hoverAndClickOnCards();
-prepareGame();
+setHoverAndClickOnCards();
+prepareGame(true);

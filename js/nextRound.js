@@ -1,8 +1,7 @@
 import { putDelay } from './putDelay.js';
-import { getRandomNumber } from './getRandomNumber.js';
 import { prepareGame } from './startGame.js';
-import { shuffleComputeCards, shufflePlayerCards } from './shuffleCards.js';
-import { getPlayerScore, getOpponentScore, totalRound } from '../script.js';
+import { prepareAndShuffleCards } from './shuffleCards.js';
+import { getPlayerScore, getOpponentScore, raceToNumber } from '../script.js';
 
 export async function nextRound() {
     const allCards = document.querySelectorAll('.card');
@@ -26,7 +25,7 @@ export async function nextRound() {
 }
 
 async function determineRound() {
-    if (getPlayerScore() === totalRound || getOpponentScore() === totalRound) {
+    if (getPlayerScore() === raceToNumber || getOpponentScore() === raceToNumber) {
         if (getPlayerScore() > getOpponentScore()) {
             // player won
             document.querySelector('.opponent-text').innerHTML = 'press play';
@@ -52,14 +51,7 @@ async function determineRound() {
         // prepare initial cards
     } else {
         // continue to next round
-        const allCards = document.querySelectorAll('.card');
-        allCards.forEach((card) => {
-            card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg) translateX(0px)';
-        });
-        await putDelay(150);
-
-        shuffleComputeCards();
-        shufflePlayerCards();
+        prepareAndShuffleCards();
 
         document.querySelector('.cover').classList.toggle('hidden');
         document.querySelector('.player-side > h3').innerHTML = '';
@@ -67,13 +59,5 @@ async function determineRound() {
         document.querySelector('.player-text').innerHTML = '';
         document.querySelector('.opponent-text').innerHTML = '';
         document.querySelector('.table-text > h3').innerHTML = '';
-
-        const selection = document.querySelectorAll('.selection');
-        selection.forEach((card) => {
-            card.classList.add('throw');
-            card.querySelector('.front').classList.add('hidden');
-            card.querySelector('.peek').style.opacity = '1';
-            card.querySelector('.back').style.opacity = '1';
-        });
     }
 }
