@@ -1,30 +1,37 @@
+import { setOpponentScore, setPlayerScore } from '../script.js';
 import { changeStartCursor } from './changeCursor.js';
+import { updateRoundDisplay, updateScoreDisplay } from './updateScoreBoard.js';
 import { shuffleComputeCards, shufflePlayerCards } from './shuffleCards.js';
-import { hoverAndClickOnCards } from './hoverAndClickOnCards.js';
 
-export function startGame(addListener) {
+export function prepareGame() {
     let element = document.querySelector('.round');
 
     changeStartCursor(true);
     document.querySelector('.round > div').classList.add('hidden');
     document.querySelector('.round > h2').classList.remove('hidden');
-    if (addListener) {
-        element.addEventListener('click', onClick);
-    } else {
-        element.removeEventListener('click', onClick);
-    }
+    element.addEventListener('click', startGame);
+}
 
-    function onClick() {
-        document.querySelector('.cover').classList.toggle('hidden');
-        element.removeEventListener('click', onClick);
-        changeStartCursor(false);
-        document.querySelector('.round > div').classList.remove('hidden');
-        document.querySelector('.round > h2').classList.add('hidden');
+export function startGame() {
+    document.querySelector('.cover').classList.toggle('hidden');
+    document.querySelector('.opponent-text').innerHTML = '';
+    document.querySelector('.table-text > h3').innerHTML = '';
+    document.querySelector('.player-text').innerHTML = '';
+    setOpponentScore(0);
+    setPlayerScore(0);
+    updateRoundDisplay(true);
+    updateScoreDisplay(true);
 
-        shuffleComputeCards();
-        shufflePlayerCards();
+    let element = document.querySelector('.round');
+    element.removeEventListener('click', startGame);
 
-        document.querySelector('.opponent-side > h3').innerHTML = 'go!';
-        document.querySelector('.player-side > h3').innerHTML = 'go!';
-    }
+    changeStartCursor(false);
+    document.querySelector('.round > div').classList.remove('hidden');
+    document.querySelector('.round > h2').classList.add('hidden');
+
+    shuffleComputeCards();
+    shufflePlayerCards();
+
+    document.querySelector('.opponent-side > h3').innerHTML = 'go!';
+    document.querySelector('.player-side > h3').innerHTML = 'go!';
 }

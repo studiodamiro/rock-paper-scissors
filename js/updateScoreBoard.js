@@ -11,13 +11,13 @@ export function updateScoreBoard(playerChoice, computerChoice) {
     if (roundStatus === true) {
         document.querySelector('.opponent-side > h3').innerHTML = 'you lose';
         document.querySelector('.player-side > h3').innerHTML = 'you win';
-        updateScoreDisplay(true);
+        updateScoreDisplay(false, true);
         // update player score
         setPlayerScore(getPlayerScore() + 1);
     } else if (roundStatus === false) {
         document.querySelector('.opponent-side > h3').innerHTML = 'you win';
         document.querySelector('.player-side > h3').innerHTML = 'you lose';
-        updateScoreDisplay(false);
+        updateScoreDisplay(false, false);
         // update opponent score
         setOpponentScore(getOpponentScore() + 1);
     } else {
@@ -28,7 +28,7 @@ export function updateScoreBoard(playerChoice, computerChoice) {
     updateRoundDisplay(false);
 }
 
-function updateRoundDisplay(reset) {
+export function updateRoundDisplay(reset) {
     if (reset) {
         document.querySelector('.in-game > h3').innerHTML = '0';
     } else {
@@ -38,14 +38,20 @@ function updateRoundDisplay(reset) {
     }
 }
 
-function updateScoreDisplay(win) {
-    if (win) {
-        let playerScore = document.querySelector('.score h3:nth-of-type(2)').innerHTML;
-        playerScore++;
-        document.querySelector('.score h3:nth-of-type(2)').innerHTML = playerScore;
+export function updateScoreDisplay(reset, win) {
+    let playerScore = document.querySelector('.score h3:nth-of-type(2)').innerHTML;
+    let opponentScore = document.querySelector('.score h3:nth-of-type(1)').innerHTML;
+
+    if (reset) {
+        document.querySelector('.score h3:nth-of-type(1)').innerHTML = 0;
+        document.querySelector('.score h3:nth-of-type(2)').innerHTML = 0;
     } else {
-        let opponentScore = document.querySelector('.score h3:nth-of-type(1)').innerHTML;
-        opponentScore++;
-        document.querySelector('.score h3:nth-of-type(1)').innerHTML = opponentScore;
+        if (win) {
+            playerScore++;
+            document.querySelector('.score h3:nth-of-type(2)').innerHTML = playerScore;
+        } else {
+            opponentScore++;
+            document.querySelector('.score h3:nth-of-type(1)').innerHTML = opponentScore;
+        }
     }
 }

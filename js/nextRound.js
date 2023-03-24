@@ -1,14 +1,8 @@
 import { putDelay } from './putDelay.js';
 import { getRandomNumber } from './getRandomNumber.js';
+import { prepareGame } from './startGame.js';
 import { shuffleComputeCards, shufflePlayerCards } from './shuffleCards.js';
-import { startGame } from './startGame.js';
-import {
-    getPlayerScore,
-    getOpponentScore,
-    totalRound,
-    setPlayerScore,
-    setOpponentScore,
-} from '../script.js';
+import { getPlayerScore, getOpponentScore, totalRound } from '../script.js';
 
 export async function nextRound() {
     const allCards = document.querySelectorAll('.card');
@@ -34,21 +28,30 @@ export async function nextRound() {
 async function determineRound() {
     if (getPlayerScore() === totalRound || getOpponentScore() === totalRound) {
         if (getPlayerScore() > getOpponentScore()) {
-            document.querySelector('.player-text').innerHTML = 'to play again';
+            // player won
             document.querySelector('.opponent-text').innerHTML = 'press play';
             document.querySelector('.table-text > h3').innerHTML = '';
+            document.querySelector('.player-text').innerHTML = 'to play again';
 
             document.querySelector('.player-side > h3').innerHTML = 'congrats';
             document.querySelector('.opponent-side > h3').innerHTML = '';
         } else {
-            document.querySelector('.player-text').innerHTML = 'to play again';
-            document.querySelector('.opponent-text').innerHTML = 'press play';
+            // player loses
+            document.querySelector('.opponent-text').innerHTML = ' play again?';
             document.querySelector('.table-text > h3').innerHTML = '';
+            document.querySelector('.player-text').innerHTML = 'press play';
 
             document.querySelector('.player-side > h3').innerHTML = '';
             document.querySelector('.opponent-side > h3').innerHTML = 'congrats';
         }
+
+        // Enable play button
+        prepareGame();
+        // onClick play button
+        // reset score boards
+        // prepare initial cards
     } else {
+        // continue to next round
         const allCards = document.querySelectorAll('.card');
         allCards.forEach((card) => {
             card.style.transform = 'rotate(' + getRandomNumber(-10, 10) + 'deg) translateX(0px)';

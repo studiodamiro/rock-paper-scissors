@@ -1,8 +1,8 @@
 import { helpRenderCards } from './js/helpRenderCards.js';
 import { hoverAndClickOnCards } from './js/hoverAndClickOnCards.js';
-import { startGame } from './js/startGame.js';
+import { prepareGame } from './js/startGame.js';
 
-export const totalRound = 1;
+export const totalRound = 2;
 
 export let playerScore = 0;
 export let setPlayerScore = (newValue) => (playerScore = newValue);
@@ -18,4 +18,4 @@ document.querySelector('.cover').classList.toggle('hidden');
 
 helpRenderCards();
 hoverAndClickOnCards();
-startGame(true);
+prepareGame();
