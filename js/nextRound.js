@@ -1,8 +1,14 @@
 import { putDelay } from './putDelay.js';
 import { getRandomNumber } from './getRandomNumber.js';
 import { shuffleComputeCards, shufflePlayerCards } from './shuffleCards.js';
-import { getPlayerScore, getOpponentScore, totalRound } from '../script.js';
 import { startGame } from './startGame.js';
+import {
+    getPlayerScore,
+    getOpponentScore,
+    totalRound,
+    setPlayerScore,
+    setOpponentScore,
+} from '../script.js';
 
 export async function nextRound() {
     const allCards = document.querySelectorAll('.card');
@@ -27,16 +33,21 @@ export async function nextRound() {
 
 async function determineRound() {
     if (getPlayerScore() === totalRound || getOpponentScore() === totalRound) {
-        document.querySelector('.cover').classList.toggle('hidden');
         if (getPlayerScore() > getOpponentScore()) {
-            document.querySelector('.player-text').innerHTML = '';
-            document.querySelector('.opponent-text').innerHTML = '';
+            document.querySelector('.player-text').innerHTML = 'to play again';
+            document.querySelector('.opponent-text').innerHTML = 'press play';
             document.querySelector('.table-text > h3').innerHTML = '';
 
-            document.querySelector('.player-side > h3').innerHTML = 'lol';
+            document.querySelector('.player-side > h3').innerHTML = 'congrats';
             document.querySelector('.opponent-side > h3').innerHTML = '';
+        } else {
+            document.querySelector('.player-text').innerHTML = 'to play again';
+            document.querySelector('.opponent-text').innerHTML = 'press play';
+            document.querySelector('.table-text > h3').innerHTML = '';
+
+            document.querySelector('.player-side > h3').innerHTML = '';
+            document.querySelector('.opponent-side > h3').innerHTML = 'congrats';
         }
-        startGame(false);
     } else {
         const allCards = document.querySelectorAll('.card');
         allCards.forEach((card) => {

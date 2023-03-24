@@ -15,6 +15,7 @@ export function startGame(addListener) {
     }
 
     function onClick() {
+        document.querySelector('.cover').classList.toggle('hidden');
         element.removeEventListener('click', onClick);
         changeStartCursor(false);
         document.querySelector('.round > div').classList.remove('hidden');
@@ -22,7 +23,6 @@ export function startGame(addListener) {
 
         shuffleComputeCards();
         shufflePlayerCards();
-        hoverAndClickOnCards();
 
         document.querySelector('.opponent-side > h3').innerHTML = 'go!';
         document.querySelector('.player-side > h3').innerHTML = 'go!';
