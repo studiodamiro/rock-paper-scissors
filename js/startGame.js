@@ -9,9 +9,9 @@ export function prepareGame() {
     document.querySelector('.round > div').classList.add('hidden');
     document.querySelector('.round > h2').classList.remove('hidden');
 
-    document.querySelector('.opponent-text').innerHTML = '---';
-    document.querySelector('.table-text > h3').innerHTML = 'race to five';
-    document.querySelector('.player-text').innerHTML = 'press play';
+    document.querySelector('.opponent-text').textContent = '---';
+    document.querySelector('.table-text > h3').textContent = 'race to five';
+    document.querySelector('.player-text').textContent = 'press play';
 
     changeStartCursor(true);
     element.addEventListener('click', startGame);
@@ -20,9 +20,9 @@ export function prepareGame() {
 export function startGame() {
     // Prepare middle texts
     document.querySelector('.cover').classList.toggle('hidden');
-    document.querySelector('.opponent-text').innerHTML = '';
-    document.querySelector('.table-text > h3').innerHTML = '';
-    document.querySelector('.player-text').innerHTML = '';
+    document.querySelector('.opponent-text').textContent = '';
+    document.querySelector('.table-text > h3').textContent = '';
+    document.querySelector('.player-text').textContent = '';
 
     // prepare play button to round data
     let element = document.querySelector('.round');
@@ -38,8 +38,8 @@ export function startGame() {
     updateScoreDisplay(true);
 
     // prepare each side texts
-    document.querySelector('.opponent-side > h3').innerHTML = 'pick a card';
-    document.querySelector('.player-side > h3').innerHTML = 'pick a card';
+    document.querySelector('.opponent-side > h3').textContent = 'pick a card';
+    document.querySelector('.player-side > h3').textContent = 'pick a card';
 
     // prepare cards sets
     prepareAndShuffleCards();

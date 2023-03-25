@@ -8,7 +8,7 @@ import { nextRound } from './nextRound.js';
 export function setHoverAndClickOnCards() {
     const cards = document.querySelectorAll('.selection');
     cards.forEach((card) => {
-        card.querySelector('.peek > h3').innerHTML = card.getAttribute('data-card').charAt(0);
+        card.querySelector('.peek > h3').textContent = card.getAttribute('data-card').charAt(0);
         // mouse llisteners
         toggleEnterListener(card);
         toggleLeaveListener(card);

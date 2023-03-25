@@ -28,20 +28,20 @@ async function determineRound() {
     if (getPlayerScore() === raceToNumber || getOpponentScore() === raceToNumber) {
         if (getPlayerScore() > getOpponentScore()) {
             // player won
-            document.querySelector('.opponent-text').innerHTML = 'press play';
-            document.querySelector('.table-text > h3').innerHTML = '';
-            document.querySelector('.player-text').innerHTML = 'to play again';
+            document.querySelector('.opponent-text').textContent = 'press play';
+            document.querySelector('.table-text > h3').textContent = '';
+            document.querySelector('.player-text').textContent = 'to play again';
 
-            document.querySelector('.player-side > h3').innerHTML = 'congrats';
-            document.querySelector('.opponent-side > h3').innerHTML = 'lost';
+            document.querySelector('.player-side > h3').textContent = 'congrats';
+            document.querySelector('.opponent-side > h3').textContent = 'lost';
         } else {
             // player loses
-            document.querySelector('.opponent-text').innerHTML = ' play again?';
-            document.querySelector('.table-text > h3').innerHTML = '';
-            document.querySelector('.player-text').innerHTML = 'press play';
+            document.querySelector('.opponent-text').textContent = ' play again?';
+            document.querySelector('.table-text > h3').textContent = '';
+            document.querySelector('.player-text').textContent = 'press play';
 
-            document.querySelector('.player-side > h3').innerHTML = 'lost';
-            document.querySelector('.opponent-side > h3').innerHTML = 'congrats';
+            document.querySelector('.player-side > h3').textContent = 'lost';
+            document.querySelector('.opponent-side > h3').textContent = 'congrats';
         }
 
         // Prepare table
@@ -52,10 +52,10 @@ async function determineRound() {
         prepareAndShuffleCards();
 
         document.querySelector('.cover').classList.toggle('hidden');
-        document.querySelector('.player-side > h3').innerHTML = '';
-        document.querySelector('.opponent-side > h3').innerHTML = '';
-        document.querySelector('.player-text').innerHTML = '';
-        document.querySelector('.opponent-text').innerHTML = '';
-        document.querySelector('.table-text > h3').innerHTML = 'pick a card';
+        document.querySelector('.player-side > h3').textContent = '';
+        document.querySelector('.opponent-side > h3').textContent = '';
+        document.querySelector('.player-text').textContent = '';
+        document.querySelector('.opponent-text').textContent = '';
+        document.querySelector('.table-text > h3').textContent = 'pick a card';
     }
 }

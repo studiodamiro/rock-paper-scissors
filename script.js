@@ -12,8 +12,8 @@ export let opponentScore = 0;
 export let setOpponentScore = (newValue) => (opponentScore = newValue);
 export let getOpponentScore = () => opponentScore;
 
-document.querySelector('.opponent-side > h3').innerHTML = 'waiting';
-document.querySelector('.player-side > h3').innerHTML = 'press play';
+document.querySelector('.opponent-side > h3').textContent = 'waiting';
+document.querySelector('.player-side > h3').textContent = 'press play';
 document.querySelector('.cover').classList.toggle('hidden');
 
 helpRenderCards();
