@@ -2,6 +2,8 @@
 
 ## The Odin Project - JS Foundation Project
 
+VIEW LIVE [HERE](https://hello-damiro.github.io/rock-paper-scissors)
+
 In compliance with the Odin Project JS foundation course. Took roughly 3 days to complete. _Completed March 24 2023._
 
 __Day 1:__ Design game interface using Figma. Prepared initial files _(HTML file, css, js, SVG assets, environmental setup)_
@@ -9,8 +11,6 @@ __Day 1:__ Design game interface using Figma. Prepared initial files _(HTML file
 __Day 2:__ Work with layout, struggled with CSS and device a plan to execute mechanics of the game
 
 __Day 3:__ Struggled with JS. Finalize files.
-
-VIEW LIVE [HERE](https://hello-damiro.github.io/rock-paper-scissors)
 
 </br>
 
