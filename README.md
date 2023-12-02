@@ -2,7 +2,7 @@
 
 ## The Odin Project - JS Foundation Project
 
-VIEW LIVE [HERE](https://hello-damiro.github.io/rock-paper-scissors)
+VIEW LIVE [HERE](https://studiodamiro.github.io/rock-paper-scissors)
 
 In compliance with the Odin Project JS foundation course. Took roughly 3 days to complete. _Completed March 24 2023._
 
